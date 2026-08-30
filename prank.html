@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Got You 😄</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            font-family: Arial, Helvetica, sans-serif;
+
+            background: #f0f2f5;
+            text-align: center;
+        }
+
+        .prank-box {
+            width: 90%;
+            max-width: 500px;
+
+            background: white;
+
+            padding: 45px 30px;
+
+            border-radius: 20px;
+
+            box-shadow: 0 10px 30px rgba(0,0,0,0.12);
+        }
+
+        .emoji {
+            font-size: 80px;
+            margin-bottom: 20px;
+        }
+
+        h1 {
+            font-size: 42px;
+            margin: 10px 0;
+        }
+
+        p {
+            font-size: 20px;
+            color: #555;
+            line-height: 1.5;
+        }
+
+        button {
+            margin-top: 20px;
+
+            padding: 14px 30px;
+
+            border: none;
+            border-radius: 25px;
+
+            background: #1877f2;
+            color: white;
+
+            font-size: 17px;
+            font-weight: bold;
+
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #0d6be8;
+        }
+
+        @media (max-width: 600px) {
+
+            .prank-box {
+                padding: 35px 20px;
+            }
+
+            .emoji {
+                font-size: 65px;
+            }
+
+            h1 {
+                font-size: 32px;
+            }
+
+            p {
+                font-size: 17px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="prank-box">
+
+        <div class="emoji">😂</div>
+
+        <h1>Got You!</h1>
+
+        <p>
+            This was just a prank! 😄
+        </p>
+
+        <p>
+            Don't enter real passwords into demo websites.
+        </p>
+
+        <button onclick="window.location.href='index.html'">
+            Go Back
+        </button>
+
+    </div>
+
+</body>
+</html>
